@@ -15,5 +15,11 @@ In the file /home/ibrahim/miniconda3/envs/xview3/lib/python3.9/site-packages/tor
 # from setuptools import distutils
 from distutils.version import LooseVersion
 # LooseVersion = distutils.version.LooseVersion
-4. export XVIEW3_DIR=/media/ibrahim/SSD2TB870EV/xViewSARData/xView
-3dataForWinner
+4. export XVIEW3_DIR=/media/ibrahm/SSD2TB870EV/xViewSARData/xView3dataForWinner
+python submit_multilabel_ensemble.py configs/inference/1128_b5_b4_vs2_fliplr.yaml
+
+5. Download dataset:
+windows: isntall the binary 
+Linux: 
+Sudo snap install aria2c
+sudo aria2c --input-file=/home/ibrahm/Downloads/public --auto-file-renaming=false --continue=true --dir=/media/ibrahm/SSD2TB870EV/xViewSARData/Imagery/publicleaderboard --dry-run=false
