@@ -11,7 +11,7 @@ ensemble:
     - CENTERNET_OUTPUT_FISHING_MAP
   with_offset: True
   models:
-    - https://github.com/BloodAxe/xView3-The-First-Place-Solution/releases/download/1.0/211117_00_11_b4_unet_s2_leaky_valid_4fold_rfl_soft_bce_mse_regularized_flips_light_medium_fold1.pth
+    - https://github.com/BloodAxe/xView3-The-First-Place-Solution/releases/download/1.0/211125_23_57_b5_unet_s2_full_4fold_circlenet_loss_flips_light_medium_fold0.pth
 inference:
     channels_last: False
     use_traced_model: True

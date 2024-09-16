@@ -4,6 +4,7 @@ from .validation import *
 from .full import *
 from .tiny import *
 from .validation_with_holdout import *
+from .eval import *
 
 __all__ = [
     "DatasetSplitter",
@@ -12,6 +13,7 @@ __all__ = [
     "FullDatasetWithHoldoutSplitter",
     "ValidationOnlySplitter",
     "ValidationOnlyWithHoldoutSplitter",
+    "EvalPublicDatasetSplitter",
 ]
 # from .io import *
 # from .data_module import *

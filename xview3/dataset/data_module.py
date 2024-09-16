@@ -178,6 +178,7 @@ class XView3DataModule:
             "valid_only": ValidationOnlySplitter,
             "valid_only_with_holdout": ValidationOnlyWithHoldoutSplitter,
             "full": FullDatasetWithHoldoutSplitter,
+            "eval": EvalPublicDatasetSplitter
         }[splitter_name](data_dir=self.data_dir, **splitter_params)
         return splitter_cls.train_test_split(fold=fold, num_folds=num_folds)
 
