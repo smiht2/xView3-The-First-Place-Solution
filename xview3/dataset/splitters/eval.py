@@ -31,8 +31,14 @@ class EvalPublicDatasetSplitter(DatasetSplitter):
 
         test_path = os.path.join(self.data_dir,'test')
         test_scene_avail = [f.name for f in os.scandir(test_path) if f.is_dir()]
-        
-
+        total_len = len(test_scene_avail)
+        split_len = int(total_len/num_folds)
+        split_end = split_len*fold-1
+        split_start = split_len*(fold-1)
+        print(total_len, split_start,split_end)
+        # print(test_scene_avail)
+        # print(len(test_scene_avail))
+        test_scene_avail = test_scene_avail[split_start:split_end+1]
         test_df = test_df[test_df.scene_id.isin(test_scene_avail)].reset_index(drop=True)
 
         # valid_df = valid_df[valid_df.scene_id.isin({"590dd08f71056cacv", "b1844cde847a3942v"})].reset_index(drop=True)

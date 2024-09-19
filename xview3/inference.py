@@ -118,7 +118,11 @@ def model_from_checkpoint(checkpoint_config: Union[str, Dict], **kwargs) -> Tupl
             if os.path.isfile(checkpoint_name):
                 checkpoint = torch.load(checkpoint_name, map_location="cpu")
             else:
-                checkpoint = torch.hub.load_state_dict_from_url(checkpoint_name)
+                device_id = torch.cuda.current_device()
+                cuda_id = 'cuda:'+str(device_id)
+                print('00 CUDA ID: ', cuda_id)
+                checkpoint = torch.hub.load_state_dict_from_url(checkpoint_name,map_location=torch.device(cuda_id))
+                # checkpoint = torch.hub.load_state_dict_from_url(checkpoint_name)
 
         model_config = checkpoint["checkpoint_data"]["config"]["model"]
     else:
@@ -127,13 +131,17 @@ def model_from_checkpoint(checkpoint_config: Union[str, Dict], **kwargs) -> Tupl
         if os.path.isfile(checkpoint_name):
             checkpoint = torch.load(checkpoint_name, map_location="cpu")
         else:
-            checkpoint = torch.hub.load_state_dict_from_url(checkpoint_name)
-
+            device_id = torch.cuda.current_device()
+            cuda_id = 'cuda:'+str(device_id)
+            print('01 CUDA ID: ', cuda_id)
+            checkpoint = torch.hub.load_state_dict_from_url(checkpoint_name,map_location=torch.device(cuda_id))
+            # checkpoint = torch.hub.load_state_dict_from_url(checkpoint_name)
         model_config = checkpoint["checkpoint_data"]["config"]["model"]
 
     model_state_dict = checkpoint["model_state_dict"]
 
     model = instantiate(model_config, _recursive_=False)
+    # print('02 before another load')
     model.load_state_dict(model_state_dict, strict=False)
 
     return model.eval(), checkpoint
