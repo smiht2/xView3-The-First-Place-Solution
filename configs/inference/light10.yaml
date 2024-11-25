@@ -58,3 +58,7 @@ evaluation:
 
 
 submission_dir: submissions/light10
+distribution: 
+  total_split_n: 1
+  this_split: 1
+  gpu_rank: 0

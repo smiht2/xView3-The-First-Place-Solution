@@ -287,6 +287,7 @@ def predict_multilabel_scenes(
     all_predictions = []
 
     scenes = np.array(scenes)
+    print("Scenes: ", np.size(scenes))
     world_size, local_rank = get_world_size(), get_rank()
 
     if world_size > 1:
@@ -321,7 +322,7 @@ def predict_multilabel_scenes(
         all_predictions.append(predictions)
         if output_predictions_dir is not None:
             predictions.to_csv(os.path.join(output_predictions_dir, scene_id + ".csv"), index=False)
-
+    print('Length of all predictions: ',len(all_predictions))
     all_predictions = pd.concat(all_predictions).reset_index(drop=True)
 
     if world_size > 1:

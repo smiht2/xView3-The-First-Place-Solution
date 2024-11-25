@@ -62,7 +62,7 @@ def evaluate_ensemble_on_holdout(config: Dict[str, Any], data_dir: str):
 
     del checkpoints
     gc.collect()
-    prefix = "eval_public_full_medium3"
+    prefix = "eval_melbourne_light10"
     suffix = f"_step_{tile_step}_tta_{tta_mode}"
     evaluate_on_scenes(
         model=model,
